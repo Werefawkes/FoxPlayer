@@ -41,9 +41,14 @@ namespace Foxthorne.PlayerController
 		#region Movement
 		void DoMovement()
 		{
-			Vector3 velocity = Vector3.zero;
-			velocity.x = moveInput.x * moveSpeed;
-			velocity.z = moveInput.y * moveSpeed;
+			Vector3 camForward = playerCam.transform.forward;
+			camForward.y = 0;
+			camForward.Normalize();
+			Vector3 camRight = playerCam.transform.right;
+			camRight.y = 0;
+			camRight.Normalize();
+
+			Vector3 velocity = moveInput.y * moveSpeed * camForward + moveInput.x * moveSpeed * camRight;
 			rb.velocity = velocity;
 		}
 
