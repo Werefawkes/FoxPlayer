@@ -1,0 +1,16 @@
+{
+    "name": "foxthorne.foxplayer",
+    "rootNamespace": "Foxthorne.PlayerController",
+    "references": [
+        "GUID:45008ff3c2601ca4eb82b31e15bae191"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
