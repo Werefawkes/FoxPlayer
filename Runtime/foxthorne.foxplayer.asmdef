@@ -1,6 +1,6 @@
 {
     "name": "foxthorne.foxplayer",
-    "rootNamespace": "Foxthorne.PlayerController",
+    "rootNamespace": "Foxthorne.FoxPlayer",
     "references": [
         "GUID:45008ff3c2601ca4eb82b31e15bae191",
         "GUID:75469ad4d38634e559750d17036d5f7c"

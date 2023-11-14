@@ -4,9 +4,9 @@ using UnityEngine;
 using Foxthorne.FoxInventory;
 using UnityEngine.InputSystem;
 
-namespace Foxthorne.PlayerController
+namespace Foxthorne.FoxPlayer
 {
-	public class Player : MonoBehaviour
+	public class FTPlayer : MonoBehaviour
 	{
 		[Header("Movement")]
 		public float moveSpeed = 1;
@@ -18,21 +18,10 @@ namespace Foxthorne.PlayerController
 		Vector2 lookInput;
 		public Camera playerCam;
 
-		[Header("Interaction")]
-		public SO_ItemData selectedItemData;
-
-		[Header("Input")]
-		PlayerInput PlayerInput;
-
 		[Header("References")]
 		public Rigidbody rb;
 
-		void Start()
-		{
-
-		}
-
-		void Update()
+		public virtual void Update()
 		{
 			DoMovement();
 			DoLook();
@@ -77,7 +66,5 @@ namespace Foxthorne.PlayerController
 			lookInput = value.Get<Vector2>();
 		}
 		#endregion Movement
-
-
 	}
 }
