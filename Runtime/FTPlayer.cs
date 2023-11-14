@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Foxthorne.FoxInventory;
+using Foxthorne.FoxScreens;
 using UnityEngine.InputSystem;
 
 namespace Foxthorne.FoxPlayer
@@ -23,6 +23,12 @@ namespace Foxthorne.FoxPlayer
 
 		public virtual void Update()
 		{
+			if (!UIManager.IsUIClear)
+			{
+				moveInput = Vector2.zero;
+				lookInput = Vector2.zero;
+			}
+
 			DoMovement();
 			DoLook();
 		}

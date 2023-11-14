@@ -2,7 +2,7 @@
     "name": "foxthorne.foxplayer",
     "rootNamespace": "Foxthorne.FoxPlayer",
     "references": [
-        "GUID:45008ff3c2601ca4eb82b31e15bae191",
+        "GUID:f7daa2c50d51c874daf7c02a13bd3b76",
         "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
