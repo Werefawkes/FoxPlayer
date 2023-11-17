@@ -10,12 +10,17 @@ namespace Foxthorne.FoxPlayer
 	{
 		[Header("Movement")]
 		public float moveSpeed = 1;
-		public Vector2 moveInput;
-
 		public float lookSpeed = 1;
+		public float jumpStrength = 1;
+		public Vector2 moveInput;
+		public Vector3 gravity = Vector3.down;
+		public bool isGrounded = false;
+		public float groundedDistance = 0.1f;
+		public float groundedSpeedLimit = 10;
+
 		public float minLookAngle = -80;
 		public float maxLookAngle = 80;
-		Vector2 lookInput;
+		public Vector2 lookInput;
 		public Camera playerCam;
 
 		[Header("References")]
@@ -29,12 +34,14 @@ namespace Foxthorne.FoxPlayer
 				lookInput = Vector2.zero;
 			}
 
+			isGrounded = Physics.Raycast(transform.position, -transform.up, groundedDistance);
+
 			DoMovement();
 			DoLook();
 		}
 
 		#region Movement
-		void DoMovement()
+		public void DoMovement()
 		{
 			Vector3 camForward = playerCam.transform.forward;
 			camForward.y = 0;
@@ -44,10 +51,11 @@ namespace Foxthorne.FoxPlayer
 			camRight.Normalize();
 
 			Vector3 velocity = moveInput.y * moveSpeed * camForward + moveInput.x * moveSpeed * camRight;
+
 			rb.velocity = velocity;
 		}
 
-		void DoLook()
+		public void DoLook()
 		{
 			Vector3 angles = playerCam.transform.localEulerAngles;
 			angles.x += -lookInput.y * lookSpeed;
@@ -70,6 +78,14 @@ namespace Foxthorne.FoxPlayer
 		void OnLook(InputValue value)
 		{
 			lookInput = value.Get<Vector2>();
+		}
+
+		void OnJump()
+		{
+			if (isGrounded)
+			{
+				rb.AddForce(transform.up * jumpStrength, ForceMode.Impulse);
+			}
 		}
 		#endregion Movement
 	}
