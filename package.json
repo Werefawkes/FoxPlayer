@@ -9,6 +9,8 @@
     "email": "jack@wrightus.com"
   },
   "dependencies": {
-    "com.foxthorne.utilities": "0.0.1"
+    "com.foxthorne.utilities": "0.0.1",
+    "com.foxthorne.foxscreens": "0.0.1",
+    "com.unity.inputsystem": "1.7.0"
   }
 }
