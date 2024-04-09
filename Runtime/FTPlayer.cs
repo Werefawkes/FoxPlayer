@@ -34,7 +34,7 @@ namespace Foxthorne.FoxPlayer
 				lookInput = Vector2.zero;
 			}
 
-			isGrounded = Physics.Raycast(transform.position, -transform.up, groundedDistance);
+			isGrounded = Physics.Raycast(new(transform.position.x, transform.position.y + 0.01f, transform.position.z), -transform.up, groundedDistance);
 
 			DoMovement();
 			DoLook();
@@ -51,6 +51,10 @@ namespace Foxthorne.FoxPlayer
 			camRight.Normalize();
 
 			Vector3 velocity = moveInput.y * moveSpeed * camForward + moveInput.x * moveSpeed * camRight;
+			if (!isGrounded)
+			{
+				velocity.y = rb.velocity.y + gravity.y;
+			}
 
 			rb.velocity = velocity;
 		}

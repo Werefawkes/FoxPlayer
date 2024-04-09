@@ -1,7 +1,7 @@
 {
   "name": "com.foxthorne.foxplayer",
   "version": "0.0.1",
-  "displayName": "Fox Player Controller",
+  "displayName": "Fox Player",
   "description": "Components for controlling the player character.",
   "unity": "2022.3",
   "author": {
@@ -9,7 +9,7 @@
     "email": "jack@wrightus.com"
   },
   "dependencies": {
-    "com.foxthorne.utilities": "0.0.1",
+    "com.foxthorne.foxcore": "0.0.1",
     "com.foxthorne.foxscreens": "0.0.1",
     "com.unity.inputsystem": "1.7.0"
   }
