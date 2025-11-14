@@ -3,7 +3,8 @@
     "rootNamespace": "Foxthorne.FoxPlayer",
     "references": [
         "GUID:f7daa2c50d51c874daf7c02a13bd3b76",
-        "GUID:75469ad4d38634e559750d17036d5f7c"
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:962f75d2a66ca3741815080a77b41adb"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

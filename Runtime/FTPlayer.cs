@@ -3,28 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using Foxthorne.FoxScreens;
 using UnityEngine.InputSystem;
+using CustomInspector;
 
 namespace Foxthorne.FoxPlayer
 {
 	public class FTPlayer : MonoBehaviour
 	{
-		[Header("Movement")]
+		[HorizontalLine("Movement")]
 		public float moveSpeed = 1;
-		public float lookSpeed = 1;
 		public float jumpStrength = 1;
-		public Vector2 moveInput;
-		public Vector3 gravity = Vector3.down;
-		public bool isGrounded = false;
 		public float groundedDistance = 0.1f;
 		public float groundedSpeedLimit = 10;
 
+		[HorizontalLine("Camera")]
+		public float lookSpeed = 1;
 		public float minLookAngle = -80;
 		public float maxLookAngle = 80;
-		public Vector2 lookInput;
-		public Camera playerCam;
 
-		[Header("References")]
+		[HorizontalLine("References")]
+		[ForceFill]
+		public Camera playerCam;
+		[SelfFill(true)]
 		public Rigidbody rb;
+
+
+		[HorizontalLine("Info")]
+		[ReadOnly]
+		public Vector3 gravity = Vector3.down;
+		[ReadOnly]
+		public Vector3 moveInput;
+		[ReadOnly]
+		public Vector2 lookInput;
+		[ReadOnly]
+		public bool isGrounded = false;
+
 
 		public virtual void Update()
 		{
@@ -59,7 +71,7 @@ namespace Foxthorne.FoxPlayer
 			rb.velocity = velocity;
 		}
 
-		public void DoLook()
+		public virtual void DoLook()
 		{
 			Vector3 angles = playerCam.transform.localEulerAngles;
 			angles.x += -lookInput.y * lookSpeed;
@@ -74,17 +86,17 @@ namespace Foxthorne.FoxPlayer
 		}
 
 		// Input methods
-		void OnMove(InputValue value)
+		public void OnMove(InputValue value)
 		{
 			moveInput = value.Get<Vector2>();
 		}
 
-		void OnLook(InputValue value)
+		public void OnLook(InputValue value)
 		{
 			lookInput = value.Get<Vector2>();
 		}
 
-		void OnJump()
+		public virtual void OnJump()
 		{
 			if (isGrounded)
 			{
